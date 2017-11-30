@@ -3,9 +3,7 @@ var Stack = function() {
     key: 0,
     storage: {}
   };
-  instanceOf.pop = stackMethods.pop;
-  instanceOf.push = stackMethods.push;
-  instanceOf.size = stackMethods.size;
+  _.extend(instanceOf, stackMethods);
   return instanceOf;
 };
 
