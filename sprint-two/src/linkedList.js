@@ -23,7 +23,6 @@ var LinkedList = function() {
   list.contains = function(target, currentList) {
     currentList = currentList || list;
     if (currentList.head.value === target) { 
-      console.log(true);
       return true;
     } else if (currentList.head.next === null) {
       return false;
