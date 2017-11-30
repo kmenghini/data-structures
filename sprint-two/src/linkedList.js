@@ -44,8 +44,5 @@ var Node = function(value) {
 
   return node;
 };
-
-
-/*
- * Complexity: What is the time complexity of the above functions?
- */
+//addToTail and removeHead have 0(1) (constant) complexity.
+//contains has 0(n) complexity
