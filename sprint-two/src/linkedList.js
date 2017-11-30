@@ -17,13 +17,12 @@ var LinkedList = function() {
   list.removeHead = function() {
     var returnValue = list.head;
     list.head = returnValue.next;
-    delete returnValue;
     return returnValue.value;
   };
 
   list.contains = function(target, currentList) {
-    var currentList = currentList || list;
-    if (currentList.head.value === target) {
+    currentList = currentList || list;
+    if (currentList.head.value === target) { 
       console.log(true);
       return true;
     } else if (currentList.head.next === null) {
@@ -31,7 +30,7 @@ var LinkedList = function() {
     } else {
       var nextList = LinkedList();
       nextList.head = currentList.head.next;
-      currentList.contains(target, nextList);
+      return currentList.contains(target, nextList);
     }
   };
   return list;
