@@ -1,8 +1,28 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+  var instanceOf = {
+    key: 0,
+    storage: {}
+  };
+  instanceOf.pop = stackMethods.pop;
+  instanceOf.push = stackMethods.push;
+  instanceOf.size = stackMethods.size;
+  return instanceOf;
 };
 
-var stackMethods = {};
+var stackMethods = {
+  pop: function() {
+    this.key--;
+    var lastVal = this.storage[this.key];
+    delete this.storage[this.key];
+    return lastVal;
+  },
+  push: function(value) {
+    this.storage[this.key] = value;
+    this.key++;
+  },
+  size: function() {
+    return Math.max(0, this.key);
+  }
+};
 
 
