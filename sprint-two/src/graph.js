@@ -2,13 +2,15 @@
 
 // Instantiate a new graph
 var Graph = function(value) {
-  //this.value = value;
+  var storage = [];
+  this.value = value;
   //this.edges = [];
 };
 
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-  //return new Graph(node);
+  var edgeStorage = [];
+  return new Graph(node);
 };
 
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
