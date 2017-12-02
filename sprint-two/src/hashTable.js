@@ -23,19 +23,59 @@ HashTable.prototype.insert = function(k, v) {
       this._count++;
     }
   };
-  
-  if (this._count > .75 * this._limit) {   //<-------------------
-    this._limit *= 2;
-    
-    this._storage.each(function(tuples) {
-      tuples.forEach(function(tuple) {
-        var i = getIndexBelowMaxForKey(tuple[0], this._limit);
-        storingFunction(tuple[0], tuple[1], i);
-      });
+  if (this._count >= .75 * this._limit) {
+    var tempHash = new HashTable();
+    tempHash._limit = tempHash._limit * 2;
+    //console.log(tempHash)
+    for (var j = 0; j < this._limit; j++) {
+      if (Array.isArray(this._storage.get(j))) {
+        for (var k = 0; k < this._storage.get(j).length; k++) {
+          var key = this._storage.get(j)[k][0];
+          var val = this._storage.get(j)[k][1];
+
+          var index2 = getIndexBelowMaxForKey(key, tempHash._limit);
+
+          //console.log(index2)
+          var firstPass;
+          // if (firstPass) {
+          //   debugger;
+          // }
+          storingFunction.call(tempHash, key, val, index2);
+          firstPass = true;
+          //console.log(k);
+        }
+      }
+    }
+  //reassign storage to tempArr
+    //this._limit = tempHash._limit;
+    // console.log(this)
+    //this._limit = tempHash._limit;
+    this._storage = tempHash._storage;
+    //console.log(tempHash._storage);
+    tempHash._storage.each(function(element) {
+      console.log(element, tempHash);
+      // element.forEach(function(tuple){
+      //   console.log(tuple);
+      // });
+      
     });
+    
+  }
+
+  // if (this._count >= .75 * this._limit) {   //<-------------------
+  //   this._limit *= 2;
+  //   var tempArr = LimitedArray(this._limit);
+  //     //console.log(this._storage);   
+  //   this._storage.each(function(tuples) {
+  //     console.log(this._storage)
+  //     tuples.forEach(function(tuple) {
+  //       var i = getIndexBelowMaxForKey(tuple[0], this._limit);
+  //       storingFunction.call(this, tuple[0], tuple[1], i);
+  //     });
+  //   });
 
     
-  } //<----------------------------------------------------------------
+  // } //<----------------------------------------------------------------
 
   var index = getIndexBelowMaxForKey(k, this._limit);
   storingFunction.call(this, k, v, index);
