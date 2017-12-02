@@ -22,12 +22,9 @@ BinarySearchTree.prototype.insert = function(value) {
       return this.left.insert(value);
     }
   }
-  //transferse the BinarySearchTree to proper postion
-  //add into left or right a pointer to new node
-  
 };
+
 BinarySearchTree.prototype.contains = function(searchValue) {
-  console.log(this.value);
   if (searchValue === this.value) {
     return true;
   } else if (searchValue > this.value) {

@@ -47,5 +47,5 @@ describe('set', function() {
     set.add('again');
     expect(set.storage.length).to.equal(5);
   });
-
+  //possible add tests for objects/arrays
 });
