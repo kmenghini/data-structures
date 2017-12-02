@@ -54,13 +54,8 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
   if (this.right) {
     this.right.depthFirstLog(cb);
   }
-
-
-//callback performed on value
-  //transverse to buttom left until right/left === null
-  //perform call back
-  //step up 
 };
 /*
- * Complexity: What is the time complexity of the above functions?
+ * Complexity: insert: O(log(n)); contains: O(log(n)); depthFirstLog: O(n)
+
  */

@@ -23,5 +23,29 @@ describe('set', function() {
     set.remove('Mel Gibson');
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
+  //our tests
+  it('should handle numbers and strings', function() {
+    set.add(1);
+    set.add(23);
+    set.add(1);
+    set.add('this');
+    set.add('that');
+    set.add('this');
+    set.add('again');
+    expect(set.contains('this')).to.equal(true);
+    expect(set.contains(23)).to.equal(true);
+    
+
+  });
+  it('it should not add duplicates to the set', function() {
+    set.add(1);
+    set.add(23);
+    set.add(1);
+    set.add('this');
+    set.add('that');
+    set.add('this');
+    set.add('again');
+    expect(set.storage.length).to.equal(5);
+  });
 
 });
