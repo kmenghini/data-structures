@@ -40,5 +40,8 @@ describe('tree', function() {
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
   });
-
+  it('should add child, even if child has no value', function() {
+    tree.addChild();
+    expect(tree.children[0].value === undefined).to.equal(true);
+  });
 });

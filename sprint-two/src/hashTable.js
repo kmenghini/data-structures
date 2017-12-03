@@ -17,10 +17,12 @@ HashTable.prototype.insert = function(k, v) {
     if (this._storage.get(index)[i][0] === k) {
       this._storage.get(index)[i] = [k, v];
       exists = true;
+      this._count++;
     }
   }
   if (exists === false) {
     this._storage.get(index).push([k, v]); 
+    this._count++;
   }
   //if (this._count >= .75 * this._limit) <--- run resize
 };
