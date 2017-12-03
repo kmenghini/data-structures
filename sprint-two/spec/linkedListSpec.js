@@ -51,5 +51,11 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
-  // add more tests here to test the functionality of linkedList
+  it ('should not contain a value that was not added', function() {
+    linkedList.addToTail(3);
+    linkedList.addToTail(9);
+    linkedList.addToTail(4);
+    linkedList.addToTail(6);
+    expect(linkedList.contains(1)).to.equal(false);
+  });
 });
